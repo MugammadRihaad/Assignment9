@@ -28,16 +28,17 @@ public class DeliveryRepositoryImpl implements DeliveryRepository {
 
     public Deliveries read(String delivId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(delivId);
     }
 
     public void delete(String delivId) {
         // find the course, delete it if it exist
+         this.repository.delete(delivId);
     }
 
     public Deliveries update(Deliveries delivId){
         // find the course, update it and delete it if it exists
-        return delivId;
+        return this.repository.update(delivId);
     }
 
 

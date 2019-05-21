@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class MPBaker {
     private String mpBakerId,mpBakerName;
     private double mpBakerSalary;
@@ -51,6 +53,12 @@ public class MPBaker {
             return new MPBaker(this);
         }
 
+        public Builder copy(MPBaker mpBaker){
+            this.mpBakerId = mpBaker.mpBakerId;
+            this.mpBakerName = mpBaker.mpBakerName;
+            this.mpBakerSalary = mpBaker.mpBakerSalary;
+            return this;
+        }
     }
 
     @Override
@@ -60,6 +68,19 @@ public class MPBaker {
                 ", Mithcells Plain Baker Name='" + mpBakerName + '\'' +
                 ",  Mitchels Plain Baker Salary='" + mpBakerSalary + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MPBaker mpBaker = (MPBaker) o;
+        return mpBakerId.equals(mpBaker.mpBakerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpBakerId);
     }
 
 }

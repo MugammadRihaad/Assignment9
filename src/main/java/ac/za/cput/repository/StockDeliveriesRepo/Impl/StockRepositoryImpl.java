@@ -27,16 +27,17 @@ public class StockRepositoryImpl implements StockRepository {
 
     public Stock read(String stocksId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(stocksId);
     }
 
     public void delete(String stocksId) {
         // find the course, delete it if it exist
+         this.repository.delete(stocksId);
     }
 
     public Stock update(Stock stocksId){
         // find the course, update it and delete it if it exists
-        return stocksId;
+        return this.repository.update(stocksId);
     }
 
 

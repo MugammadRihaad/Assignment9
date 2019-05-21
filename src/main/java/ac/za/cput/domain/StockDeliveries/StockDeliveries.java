@@ -1,5 +1,7 @@
 package ac.za.cput.domain.StockDeliveries;
 
+import java.util.Objects;
+
 public class StockDeliveries {
     private String delId,stockdelId,stockId;
 
@@ -43,6 +45,12 @@ public class StockDeliveries {
             return this;
         }
 
+        public Builder copy(StockDeliveries stockDel){
+            this.delId = stockDel.delId;
+            this.stockdelId = stockDel.stockdelId;
+            this.stockId = stockDel.stockId;
+            return this;
+        }
 
         public StockDeliveries build() {
             return new StockDeliveries(this);
@@ -57,6 +65,18 @@ public class StockDeliveries {
                 ",Stock Delivery Id='" + stockdelId + '\'' +
                 ", Stock Id='" + stockId + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StockDeliveries stockDel = (StockDeliveries) o;
+        return stockdelId.equals(stockDel.stockdelId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stockdelId);
     }
 
 }

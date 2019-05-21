@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Ledger;
 
+import java.util.Objects;
+
 public class GeneralLedger {
    private  String date,generalLId;
    private  int totalTransaction;
@@ -55,6 +57,13 @@ public class GeneralLedger {
             this.totalAmount =totalAmount;
             return this;
         }
+        public Builder copy(GeneralLedger genLedger){
+            this.generalLId = genLedger.generalLId;
+            this.date = genLedger.date;
+            this.totalTransaction = genLedger.totalTransaction;
+            this.totalAmount = genLedger.totalAmount;
+            return this;
+        }
 
         public GeneralLedger build() {
             return new GeneralLedger(this);
@@ -70,5 +79,17 @@ public class GeneralLedger {
                 ", Total Transactions='" + totalTransaction + '\'' +
                 ", Total amount='" + totalAmount + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GeneralLedger genLedger = (GeneralLedger) o;
+        return generalLId.equals(genLedger.generalLId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(generalLId);
     }
 }

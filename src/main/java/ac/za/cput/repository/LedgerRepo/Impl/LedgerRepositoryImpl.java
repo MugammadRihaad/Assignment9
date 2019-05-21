@@ -27,16 +27,17 @@ public class LedgerRepositoryImpl implements LedgerRepository {
 
     public Ledger read(String ledgerId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(ledgerId);
     }
 
     public void delete(String ledgerId) {
         // find the course, delete it if it exist
+         this.repository.delete(ledgerId);
     }
 
     public Ledger update(Ledger ledger){
         // find the course, update it and delete it if it exists
-        return ledger;
+        return this.repository.update(ledger);
     }
 
 

@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class MPDelivery {
     private String mpDeliveId,mpStockId;
 
@@ -36,7 +38,11 @@ public class MPDelivery {
             return this;
         }
 
-
+        public Builder copy(MPDelivery mpDeliv){
+            this.mpDeliveId = mpDeliv.mpDeliveId;
+            this.mpStockId = mpDeliv.mpStockId;
+            return this;
+        }
 
         public MPDelivery build() {
             return new MPDelivery(this);
@@ -50,5 +56,18 @@ public class MPDelivery {
                 " Mitchells Plain Delivery Id='" + mpDeliveId + '\'' +
                 ",Mitchells Plain Stock Id='" + mpStockId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MPDelivery mpDeliv = (MPDelivery) o;
+        return mpDeliveId.equals(mpDeliv.mpDeliveId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpDeliveId);
     }
 }

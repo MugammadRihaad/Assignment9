@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Town;
 
+import java.util.Objects;
+
 public class ProductBiscuits {
     private String productBiscuitsId,category;
     private int amount;
@@ -49,7 +51,12 @@ public class ProductBiscuits {
             return this;
         }
 
-
+        public Builder copy(ProductBiscuits prodBiscuit){
+            this.productBiscuitsId = prodBiscuit.productBiscuitsId;
+            this.category = prodBiscuit.category;
+            this.amount = prodBiscuit.amount;
+            return this;
+        }
 
         public ProductBiscuits build() {
             return new ProductBiscuits(this);
@@ -65,5 +72,17 @@ public class ProductBiscuits {
                 ", Biscuits Amount Id='" + amount + '\'' +
 
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductBiscuits biscuits = (ProductBiscuits) o;
+        return productBiscuitsId.equals(biscuits.productBiscuitsId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productBiscuitsId);
     }
 }

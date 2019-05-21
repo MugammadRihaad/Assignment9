@@ -4,6 +4,7 @@ import ac.za.cput.domain.Bellville.BellvilleAccountant;
 import ac.za.cput.repository.BellvilleRepo.BellvilleAccountantRepository;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class BellvilleAccountantRepoImpl implements BellvilleAccountantRepository {
@@ -14,29 +15,43 @@ public class BellvilleAccountantRepoImpl implements BellvilleAccountantRepositor
         this.bellAccount = new HashSet<>();
     }
 
+    private BellvilleAccountant findAccountant(String account) {
+        return this.bellAccount.stream()
+                .filter(bellAccount -> bellAccount.getBellAccountId().trim().equals(account))
+                .findAny()
+                .orElse(null);
+    }
     public static BellvilleAccountantRepoImpl getRepository(){
         if (repository == null) repository = new BellvilleAccountantRepoImpl();
         return repository;
     }
 
 
-    public BellvilleAccountant create(BellvilleAccountant accountant){
-        this.bellAccount.add(accountant);
-        return accountant;
+    public BellvilleAccountant create(BellvilleAccountant accountants){
+        this.bellAccount.add(accountants);
+        return accountants;
     }
 
-    public BellvilleAccountant read(String accountantId){
+    public BellvilleAccountant read(String account){
         // find the Accountant that matches the id and return it if exist
-        return null;
+        BellvilleAccountant bellAccount = findAccountant(account);
+        return bellAccount;
     }
 
-    public void delete(String accountantId) {
+    public void delete(String account) {
         // find the Accountant, delete it if it exist
+        BellvilleAccountant accountings = findAccountant(account);
+        if (bellAccount != null) this.bellAccount.remove(bellAccount);
     }
 
     public BellvilleAccountant update(BellvilleAccountant accountant){
-        // find the Accountant, update it and delete it if it exists
-        return accountant;
+
+        BellvilleAccountant toDelete = findAccountant(accountant.getBellAccountId());
+        if(toDelete != null) {
+            this.bellAccount.remove(toDelete);
+            return create(accountant);
+        }
+        return null;
     }
 
 

@@ -27,16 +27,17 @@ public class MPBranchRepositoryImpl implements MPBranchRepository {
 
     public MPBranch read(String branchId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(branchId);
     }
 
     public void delete(String branchId) {
         // find the course, delete it if it exist
+         this.repository.delete(branchId);
     }
 
     public MPBranch update(MPBranch branch){
         // find the course, update it and delete it if it exists
-        return branch;
+        return this.repository.update(branch);
     }
 
 

@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Town;
 
+import java.util.Objects;
+
 public class TownBaker {
 
     private String tnBakerId,tnBakerName;
@@ -46,7 +48,12 @@ public class TownBaker {
             this.tnBakerSalary =tnBakerSalary;
             return this;
         }
-
+        public Builder copy(TownBaker tnBaker){
+            this.tnBakerId = tnBaker.tnBakerId;
+            this.tnBakerName = tnBaker.tnBakerName;
+            this.tnBakerSalary = tnBaker.tnBakerSalary;
+            return this;
+        }
 
         public TownBaker build() {
             return new TownBaker(this);
@@ -61,5 +68,17 @@ public class TownBaker {
                 ", Town Name='" + tnBakerName + '\'' +
                 ",  Town Salary='" + tnBakerSalary + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TownBaker tnBaker = (TownBaker) o;
+        return tnBakerId.equals(tnBaker.tnBakerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tnBakerId);
     }
 }

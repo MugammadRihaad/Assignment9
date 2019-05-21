@@ -28,16 +28,17 @@ public class TownBakerRepositoryImpl implements TownBakerRepository {
 
     public TownBaker read(String bakerId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(bakerId);
     }
 
     public void delete(String bakerId) {
         // find the course, delete it if it exist
+         this.repository.delete(bakerId);
     }
 
     public TownBaker update(TownBaker baker){
         // find the course, update it and delete it if it exists
-        return baker;
+        return this.repository.update(baker);
     }
 
 

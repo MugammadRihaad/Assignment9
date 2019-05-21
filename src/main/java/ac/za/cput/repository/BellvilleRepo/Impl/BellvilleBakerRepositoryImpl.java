@@ -28,16 +28,17 @@ public class BellvilleBakerRepositoryImpl implements BellvilleBakerRepository {
 
     public bellvilleBaker read(String bakerId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(bakerId);
     }
 
     public void delete(String bakerId) {
         // find the course, delete it if it exist
+         this.repository.delete(bakerId);
     }
 
     public bellvilleBaker update(bellvilleBaker baker){
         // find the course, update it and delete it if it exists
-        return baker;
+        return this.repository.update(baker);
     }
 
 

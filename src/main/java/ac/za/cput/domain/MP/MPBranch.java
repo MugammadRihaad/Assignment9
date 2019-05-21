@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class MPBranch {
     private String mpBrId,mpStaffId;
 
@@ -38,7 +40,11 @@ public class MPBranch {
         }
 
 
-
+        public Builder copy(MPBranch mpBranch){
+            this.mpBrId = mpBranch.mpBrId;
+            this.mpStaffId = mpBranch.mpStaffId;
+            return this;
+        }
         public MPBranch build() {
             return new MPBranch(this);
         }
@@ -52,5 +58,18 @@ public class MPBranch {
                 ", MitchellsPlain Staff Id='" + mpStaffId + '\'' +
 
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MPBranch mpBranch = (MPBranch) o;
+        return mpBrId.equals(mpBranch.mpBrId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpBrId);
     }
 }

@@ -28,16 +28,17 @@ public class StockDeliveriesRepositoryImpl implements StockDeliveriesRepository 
 
     public StockDeliveries read(String stockdelId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(stockdelId);
     }
 
     public void delete(String stockdelId) {
         // find the course, delete it if it exist
+         this.repository.read(stockdelId);
     }
 
     public StockDeliveries update(StockDeliveries stockdel){
         // find the course, update it and delete it if it exists
-        return stockdel;
+        return this.repository.update(stockdel);
     }
 
 

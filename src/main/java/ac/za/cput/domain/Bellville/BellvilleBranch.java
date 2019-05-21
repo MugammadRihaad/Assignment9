@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Bellville;
 
+import java.util.Objects;
+
 public class BellvilleBranch {
     private String bellBrId,bellStaffId;
 
@@ -43,6 +45,11 @@ public class BellvilleBranch {
             return new BellvilleBranch(this);
         }
 
+        public Builder copy(BellvilleBranch bellBranch){
+            this.bellBrId = bellBranch.bellBrId;
+            this.bellStaffId = bellBranch.bellStaffId;
+            return this;
+        }
     }
 
     @Override
@@ -52,5 +59,17 @@ public class BellvilleBranch {
                 ", Bellville Staff Id='" + bellStaffId + '\'' +
 
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BellvilleBranch bellBranch = (BellvilleBranch) o;
+        return bellBrId.equals(bellBranch.bellBrId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bellBrId);
     }
 }

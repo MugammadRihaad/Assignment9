@@ -1,5 +1,6 @@
 package ac.za.cput.repository.BellvilleRepo;
 
+import ac.za.cput.domain.Bellville.BellvilleAccountant;
 import ac.za.cput.domain.Bellville.bellvilleBaker;
 import ac.za.cput.repository.IRepository;
 

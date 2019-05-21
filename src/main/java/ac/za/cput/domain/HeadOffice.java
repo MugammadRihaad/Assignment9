@@ -1,5 +1,7 @@
 package ac.za.cput.domain;
 
+import java.util.Objects;
+
 public class HeadOffice {
     private String officeId,bellvilleBrId,townBrId,
             mpBrId;
@@ -56,6 +58,13 @@ public class HeadOffice {
             return this;
         }
 
+        public Builder copy(HeadOffice headOffice){
+            this.officeId = headOffice.officeId;
+            this.bellvilleBrId = headOffice.bellvilleBrId;
+            this.townBrId = headOffice.townBrId;
+            this.mpBrId = headOffice.mpBrId;
+            return this;
+        }
 
         public HeadOffice build() {
             return new HeadOffice(this);
@@ -72,5 +81,17 @@ public class HeadOffice {
                 ",Mitchells Plain  Branch Id='" + mpBrId + '\'' +
 
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HeadOffice headOffice = (HeadOffice) o;
+        return officeId.equals(headOffice.officeId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(officeId);
     }
 }

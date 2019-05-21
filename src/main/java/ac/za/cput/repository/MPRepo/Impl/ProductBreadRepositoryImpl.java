@@ -28,16 +28,17 @@ public class ProductBreadRepositoryImpl implements ProductBreadRepository {
 
     public ProductBread read(String breadId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(breadId);
     }
 
     public void delete(String breadId) {
         // find the course, delete it if it exist
+         this.repository.delete(breadId);
     }
 
     public ProductBread update(ProductBread bread){
         // find the course, update it and delete it if it exists
-        return bread;
+        return this.repository.update(bread);
     }
 
 

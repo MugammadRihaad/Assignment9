@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Bellville;
 
+import java.util.Objects;
+
 public class BellvilleDelivery {
     private String bellDeliveId,bellStockId;
 
@@ -36,7 +38,11 @@ public class BellvilleDelivery {
             return this;
         }
 
-
+        public Builder copy(BellvilleDelivery bellDeliv){
+            this.bellDeliveId = bellDeliv.bellDeliveId;
+            this.bellStockId = bellDeliv.bellStockId;
+            return this;
+        }
 
         public BellvilleDelivery build() {
             return new BellvilleDelivery(this);
@@ -50,5 +56,17 @@ public class BellvilleDelivery {
                 " Bellville Delivery Id='" + bellDeliveId + '\'' +
                 ",Bellville Stock Id='" + bellStockId + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BellvilleDelivery bellDelivery = (BellvilleDelivery) o;
+        return bellDeliveId.equals(bellDelivery.bellDeliveId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bellDeliveId);
     }
 }

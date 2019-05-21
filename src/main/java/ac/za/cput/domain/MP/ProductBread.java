@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class ProductBread {
     private String productBreadId,category;
     private int amount;
@@ -49,7 +51,12 @@ public class ProductBread {
             return this;
         }
 
-
+        public Builder copy(ProductBread prodBread){
+            this.productBreadId = prodBread.productBreadId;
+            this.category = prodBread.category;
+            this.amount = prodBread.amount;
+            return this;
+        }
 
         public ProductBread build() {
             return new ProductBread(this);
@@ -65,5 +72,18 @@ public class ProductBread {
                 ", Bread Amount Id='" + amount + '\'' +
 
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductBread bread = (ProductBread) o;
+        return productBreadId.equals(bread.productBreadId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productBreadId);
     }
 }

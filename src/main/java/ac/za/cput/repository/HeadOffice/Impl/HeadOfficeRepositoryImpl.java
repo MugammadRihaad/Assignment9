@@ -27,16 +27,17 @@ public class HeadOfficeRepositoryImpl implements HeadOfficeRepository {
 
     public HeadOffice read(String officeId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(officeId);
     }
 
     public void delete(String officeId) {
         // find the course, delete it if it exist
+         this.repository.delete(officeId);
     }
 
     public HeadOffice update(HeadOffice office){
         // find the course, update it and delete it if it exists
-        return office;
+        return this.repository.update(office);
     }
 
 

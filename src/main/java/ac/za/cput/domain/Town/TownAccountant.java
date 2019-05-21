@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Town;
 
+import java.util.Objects;
+
 public class TownAccountant {
     private String tnAccountId,tnLedgerId,tnGeneralLId,
             tnBusinessLId,tnCreditorsLId;
@@ -63,6 +65,14 @@ public class TownAccountant {
             return this;
         }
 
+        public Builder copy(TownAccountant tnAccount){
+            this.tnAccountId = tnAccount.tnAccountId;
+            this.tnLedgerId = tnAccount.tnLedgerId;
+            this.tnBusinessLId = tnAccount.tnBusinessLId;
+            this.tnGeneralLId = tnAccount.tnGeneralLId;
+            this.tnCreditorsLId = tnAccount.tnCreditorsLId;
+            return this;
+        }
         public TownAccountant build() {
             return new TownAccountant(this);
         }
@@ -78,5 +88,17 @@ public class TownAccountant {
                 ",Town Business Ledger Id='" + tnBusinessLId + '\'' +
                 ",Town  Creditors Ledger Id'" + tnCreditorsLId + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TownAccountant tnAccountant = (TownAccountant) o;
+        return tnAccountId.equals(tnAccountant.tnAccountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tnAccountId);
     }
 }

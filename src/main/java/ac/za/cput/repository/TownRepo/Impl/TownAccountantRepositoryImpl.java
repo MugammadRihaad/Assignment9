@@ -27,16 +27,17 @@ public class TownAccountantRepositoryImpl implements TownAccountantRepository {
 
     public TownAccountant read(String accountantId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(accountantId);
     }
 
     public void delete(String accountantId) {
         // find the course, delete it if it exist
+         this.repository.delete(accountantId);
     }
 
     public TownAccountant update(TownAccountant accountant){
         // find the course, update it and delete it if it exists
-        return accountant;
+        return this.repository.update(accountant);
     }
 
 

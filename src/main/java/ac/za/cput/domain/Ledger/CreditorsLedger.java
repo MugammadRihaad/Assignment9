@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Ledger;
 
+import java.util.Objects;
+
 public class CreditorsLedger {
     private String creditorsLId,supplierName;
     private double suppAmountOwed;
@@ -44,6 +46,12 @@ public class CreditorsLedger {
             return this;
         }
 
+        public Builder copy(CreditorsLedger credLedger){
+            this.creditorsLId = credLedger.creditorsLId;
+            this.supplierName = credLedger.supplierName;
+            this.suppAmountOwed = credLedger.suppAmountOwed;
+            return this;
+        }
         public CreditorsLedger build() {
             return new CreditorsLedger(this);
         }
@@ -57,5 +65,17 @@ public class CreditorsLedger {
                 ", Supplier Name='" + supplierName + '\'' +
                 ",Supplier Total amount Owed='" + suppAmountOwed + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreditorsLedger credLedger = (CreditorsLedger) o;
+        return creditorsLId.equals(credLedger.creditorsLId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(creditorsLId);
     }
 }

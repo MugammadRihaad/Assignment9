@@ -27,16 +27,17 @@ public class ProductBiscuitsRepositoryImpl implements ProductBiscuitsRepository 
 
     public ProductBiscuits read(String biscuitsId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(biscuitsId);
     }
 
     public void delete(String biscuitsId) {
         // find the course, delete it if it exist
+         this.repository.delete(biscuitsId);
     }
 
     public ProductBiscuits update(ProductBiscuits biscuits){
         // find the course, update it and delete it if it exists
-        return biscuits;
+        return this.repository.update(biscuits);
     }
 
 

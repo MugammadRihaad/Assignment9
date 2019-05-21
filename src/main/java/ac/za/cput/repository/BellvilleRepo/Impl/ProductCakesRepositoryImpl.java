@@ -27,16 +27,17 @@ public class ProductCakesRepositoryImpl implements ProductCakesRepository {
 
     public ProductCakes read(String cakesId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(cakesId);
     }
 
     public void delete(String cakesId) {
         // find the course, delete it if it exist
+         this.repository.delete(cakesId);
     }
 
     public ProductCakes update(ProductCakes cakes){
         // find the course, update it and delete it if it exists
-        return cakes;
+        return this.repository.update(cakes);
     }
 
 

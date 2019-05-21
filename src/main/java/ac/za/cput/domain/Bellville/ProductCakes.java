@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Bellville;
 
+import java.util.Objects;
+
 public class ProductCakes {
     private String productCakeId,category;
     private int amount;
@@ -49,7 +51,12 @@ public class ProductCakes {
             return this;
         }
 
-
+        public Builder copy(ProductCakes prodCakes){
+            this.productCakeId = prodCakes.productCakeId;
+            this.category = prodCakes.category;
+            this.amount = prodCakes.amount;
+            return this;
+        }
 
         public ProductCakes build() {
             return new ProductCakes(this);
@@ -65,5 +72,17 @@ public class ProductCakes {
                 ", Cake Amount Id='" + amount + '\'' +
 
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductCakes cakes = (ProductCakes) o;
+        return productCakeId.equals(cakes.productCakeId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productCakeId);
     }
 }

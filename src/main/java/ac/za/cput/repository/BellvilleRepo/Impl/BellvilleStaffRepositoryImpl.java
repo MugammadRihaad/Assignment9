@@ -27,16 +27,17 @@ public class BellvilleStaffRepositoryImpl implements BellvilleStaffRepository {
 
     public BellvilleStaff read(String staffId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(staffId);
     }
 
     public void delete(String staffId) {
         // find the course, delete it if it exist
+         this.repository.delete(staffId);
     }
 
     public BellvilleStaff update(BellvilleStaff staff){
         // find the course, update it and delete it if it exists
-        return staff;
+        return this.repository.update(staff);
     }
 
 

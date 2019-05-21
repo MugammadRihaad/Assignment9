@@ -27,16 +27,17 @@ public class BellvilleDeliveryRepositoryImpl implements BellvilleDeliveryReposit
 
     public BellvilleDelivery read(String deliveryId){
         // find the course that matches the id and return it if exist
-        return null;
+        return this.repository.read(deliveryId);
     }
 
     public void delete(String deliveryId) {
         // find the course, delete it if it exist
+         this.repository.delete(deliveryId);
     }
 
     public BellvilleDelivery update(BellvilleDelivery delivery){
         // find the course, update it and delete it if it exists
-        return delivery;
+        return this.repository.update(delivery);
     }
 
 

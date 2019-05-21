@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Bellville;
 
+import java.util.Objects;
+
 public class bellvilleBaker {
     private String bellBakerId,bellBakerName;
     private double bellBakerSalary;
@@ -46,7 +48,12 @@ public class bellvilleBaker {
             return this;
         }
 
-
+        public Builder copy(bellvilleBaker bellBaker){
+            this.bellBakerId = bellBaker.bellBakerId;
+            this.bellBakerName = bellBaker.bellBakerName;
+            this.bellBakerSalary = bellBaker.bellBakerSalary;
+            return this;
+        }
         public bellvilleBaker build() {
             return new bellvilleBaker(this);
         }
@@ -60,6 +67,18 @@ public class bellvilleBaker {
                 ", Bellville Baker Name='" + bellBakerName + '\'' +
                 ", Bellville Baker Salary='" + bellBakerSalary + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        bellvilleBaker bellBaker = (bellvilleBaker) o;
+        return bellBakerId.equals(bellBaker.bellBakerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bellBakerId);
     }
 
 }

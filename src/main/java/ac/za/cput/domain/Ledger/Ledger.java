@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Ledger;
 
+import java.util.Objects;
+
 public class Ledger {
    private String ledgerId,generalLId,businessLId,creditorsLId;
 
@@ -51,7 +53,13 @@ public class Ledger {
             this.creditorsLId =creditorsLId;
             return this;
         }
-
+        public Builder copy(Ledger ledger){
+            this.ledgerId = ledger.ledgerId;
+            this.generalLId = ledger.generalLId;
+            this.businessLId = ledger.businessLId;
+            this.creditorsLId = ledger.creditorsLId;
+            return this;
+        }
         public Ledger build() {
             return new Ledger(this);
         }
@@ -66,5 +74,17 @@ public class Ledger {
                 ", Business Ledger Id='" + businessLId + '\'' +
                 ",Creditors Ledger Id'" + creditorsLId + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ledger ledger = (Ledger) o;
+        return ledgerId.equals(ledger.ledgerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ledgerId);
     }
 }

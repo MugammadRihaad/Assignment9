@@ -1,5 +1,7 @@
 package ac.za.cput.domain.Bellville;
 
+import java.util.Objects;
+
 public class BellvilleAccountant {
     private String bellAccountId,bellLedgerId,bellGeneralLId,
             bellBusinessLId,bellCreditorsLId;
@@ -62,6 +64,14 @@ public class BellvilleAccountant {
             this.bellCreditorsLId =bellCreditorsLId;
             return this;
         }
+        public Builder copy(BellvilleAccountant bellAccount){
+            this.bellAccountId = bellAccount.bellAccountId;
+            this.bellLedgerId = bellAccount.bellLedgerId;
+            this.bellBusinessLId = bellAccount.bellBusinessLId;
+            this.bellGeneralLId = bellAccount.bellGeneralLId;
+            this.bellCreditorsLId = bellAccount.bellCreditorsLId;
+            return this;
+        }
 
         public BellvilleAccountant build() {
             return new BellvilleAccountant(this);
@@ -78,5 +88,17 @@ public class BellvilleAccountant {
                 ",Bellville Business Ledger Id='" + bellBusinessLId + '\'' +
                 ",Bellville  Creditors Ledger Id'" + bellCreditorsLId + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BellvilleAccountant bellAccountant = (BellvilleAccountant) o;
+        return bellAccountId.equals(bellAccountant.bellAccountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bellAccountId);
     }
 }

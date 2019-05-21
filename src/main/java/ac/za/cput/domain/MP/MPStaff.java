@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class MPStaff {
     private String mpStaffId,mpAccountId,mpDelivId,mpBakerId;
 
@@ -52,6 +54,13 @@ public class MPStaff {
             return this;
         }
 
+        public Builder copy(MPStaff mpStaff){
+            this.mpBakerId = mpStaff.mpBakerId;
+            this.mpDelivId = mpStaff.mpDelivId;
+            this.mpAccountId = mpStaff.mpAccountId;
+            this.mpStaffId = mpStaff.mpStaffId;
+            return this;
+        }
 
         public MPStaff build() {
             return new MPStaff(this);
@@ -67,6 +76,19 @@ public class MPStaff {
                 ", Bellville Delivery Id='" + mpDelivId + '\'' +
                 ", Bellville Baker Id='" + mpBakerId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MPStaff mpStaff = (MPStaff) o;
+        return mpStaffId.equals(mpStaff.mpStaffId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpStaffId);
     }
 
 }

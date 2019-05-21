@@ -1,5 +1,7 @@
 package ac.za.cput.domain.MP;
 
+import java.util.Objects;
+
 public class MPAccountant {
     private String mpAccountId,mpLedgerId,mpGeneralLId,
             mpBusinessLId,mpCreditorsLId;
@@ -62,7 +64,14 @@ public class MPAccountant {
             this.mpCreditorsLId =mpCreditorsLId;
             return this;
         }
-
+        public Builder copy(MPAccountant mpAccount){
+            this.mpAccountId = mpAccount.mpAccountId;
+            this.mpLedgerId = mpAccount.mpLedgerId;
+            this.mpBusinessLId = mpAccount.mpBusinessLId;
+            this.mpGeneralLId = mpAccount.mpGeneralLId;
+            this.mpCreditorsLId = mpAccount.mpCreditorsLId;
+            return this;
+        }
         public MPAccountant build() {
             return new MPAccountant(this);
         }
@@ -78,5 +87,18 @@ public class MPAccountant {
                 ",Mitchells Plain Business Ledger Id'" + mpBusinessLId + '\'' +
                 ",Mitchells Plain Creditors Ledger Id'" + mpCreditorsLId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MPAccountant mpAccountant = (MPAccountant) o;
+        return mpAccountId.equals(mpAccountant.mpAccountId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mpAccountId);
     }
 }
